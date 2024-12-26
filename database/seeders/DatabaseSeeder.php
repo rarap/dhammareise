@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Centre;
+use App\Models\Event;
+use App\Models\Transfer;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -17,8 +19,8 @@ class DatabaseSeeder extends Seeder
     {
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         // Truncate tables
-        DB::table('transfer')->truncate();
-        DB::table('event')->truncate();
+        DB::table('transfers')->truncate();
+        DB::table('events')->truncate();
         DB::table('centre')->truncate();
         DB::table('users')->truncate();
 
@@ -26,6 +28,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call(CentreSeeder::class);
         User::factory(10)->create();
+        Event::factory(20)->create();
+        Transfer::factory(100)->create();
 
 
         // User::factory()->create([
