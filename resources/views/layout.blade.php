@@ -10,7 +10,6 @@
         @vite('resources/css/app.css')
     <title>Dhammareise</title>
 </head>
-
 <body class="bg-gray-50">
     Layout
     {{ $slot }}

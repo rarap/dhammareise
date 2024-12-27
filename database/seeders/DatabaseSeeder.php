@@ -28,8 +28,14 @@ class DatabaseSeeder extends Seeder
 
         $this->call(CentreSeeder::class);
         User::factory(10)->create();
-        Event::factory(20)->create();
-        Transfer::factory(100)->create();
+        Event::factory(20)->create()->each(function($event) {
+          $curEvId = $event->id;
+          $curIdentifier = $$event->centre_fk;
+
+          Transfer::facto
+
+        });
+       
 
 
         // User::factory()->create([
