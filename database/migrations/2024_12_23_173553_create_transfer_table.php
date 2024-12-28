@@ -27,7 +27,7 @@ return new class extends Migration
                 'offer'
             ]);
             $table->foreign('event_id')->references('id')->on('event');
-            $table->foreign('centre_fk')->references('identifier')->on('centre');
+            $table->foreign('centre_fk')->references('centre_fk')->on('event');
         });
     }
 
