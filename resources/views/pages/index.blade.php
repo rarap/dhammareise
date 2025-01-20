@@ -1,6 +1,6 @@
 <x-layout>
     <div>
-        Index Page
+        <x-event :events="$events"/>
     </div>
 
 </x-layout>

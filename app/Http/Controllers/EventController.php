@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -10,9 +11,10 @@ class EventController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): View
     {
-        //
+        $events = Event::get()->where('centre_fk', 'buddha_haus')->sortby('ev_date');
+        return view('pages.index')->with('events', $events);
     }
 
     /**
