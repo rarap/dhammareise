@@ -14,7 +14,8 @@ class TransferController extends Controller
      */
     public function index(Event $event): View
     {
-        return view('components.transfer')->with('event', $event)->with('mode', request('mode'));
+        //return view('components.transfer')->with('event', $event)->with('mode', request('mode'));
+        return view('components.transfer')->with(['event' => $event, 'mode' => request('mode')]);
     }
 
     /**
