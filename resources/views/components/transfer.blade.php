@@ -1,5 +1,11 @@
+
 <x-layout>
 <div>
-   Transfer
+
+    {{$event->title}}
+    {{$mode}}
+
+
+
 </div>
 </x-layout>

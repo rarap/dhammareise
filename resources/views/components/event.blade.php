@@ -60,14 +60,14 @@
           {{$event->destination}}</td>
         <td class="p-2 pl-4">
     <div class="row flex">
-        <button onclick="location.href='{{route('evtransfer', $event->id)}}'"
+        <button onclick="location.href='{{route('alltransfer', ['event'=>$event->id, 'mode'=>'offer'])}}'"
         class="rounded-md rounded-r-none bg-transparent py-2 border-orange-900 text-center text-orange-900 font-semibold transition-all shadow-md focus:shadow-none hover:text-white hover:bg-orange-600 px-2 border text-xs"
           type="button"
       >
       <i class="fa-solid fa-car"></i>
       Biete
       </button>
-        <button
+        <button onclick="location.href='{{route('alltransfer', $event->id).'?mode=request'}}'"
           class="rounded-md rounded-l-none bg-transparent py-2 border-orange-900 text-center text-orange-900 font-semibold transition-all shadow-md focus:shadow-none hover:text-white hover:bg-orange-600 px-2 border text-xs"
           type="button">
         <i class="fa-regular fa-thumbs-up"></i>
