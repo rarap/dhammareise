@@ -12,7 +12,7 @@
     <title>Dhammareise</title>
 </head>
 <body class="font-sans">
-    Layout
+    <x-header/>
     {{ $slot }}
 </body>
 

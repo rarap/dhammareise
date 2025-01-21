@@ -1,31 +1,32 @@
 @props(['events'])
 @if(count($events))
-<div>
-<table class="table-auto ">
+<div class="flex justify-center items-center">
+<table class=" max-w-screen-xl border-collapse border border-slate-400">
     <thead>
       <tr class="bg-slate-400">
-        <th class="border-b
-        dark:border-slate-600
+        <th class="
         font-medium
-        p-4 pl-8
+        p-2 pl-4
         text-white
          text-left">Id</th>
-        <th class="border-b
-        dark:border-slate-600
+        <th class="
         font-medium
-        p-4 pl-8
+        p-2 pl-4
         text-white
          text-left">Beginn</th>
-        <th class="border-b
-        dark:border-slate-600
+        <th class="
         font-medium
-        p-4 pl-8
+        p-2 pl-4
         text-white
          text-left">Veranstaltung</th>
-        <th class="border-b
-        dark:border-slate-600
+         <th class="
         font-medium
-        p-4 pl-8
+        p-2 pl-4
+        text-white
+         text-left">Ort</th>
+        <th class="
+        font-medium
+        p-2 pl-4
         text-white
          text-left">Fahrten</th>
       </tr>
@@ -33,55 +34,47 @@
     <tbody class="bg-white dark:bg-slate-800">
         @foreach($events as $event)
       <tr class="{{($loop->iteration) % 2 == 0 ? 'bg-gray-200' : 'bg-white'}}">
-        <td class="border-b
-         border-slate-100
-          dark:border-slate-700
-          p-4 pl-8
+        <td class="
+          p-2 pl-4
          text-slate-500
          dark:text-slate-400
          text-left">
          {{$event->id}}</td>
-        <td class="border-b
-         border-slate-100
-          dark:border-slate-700
-          p-4 pl-8
+        <td class="
+          p-2 pl-4
          text-slate-500
          dark:text-slate-400
          text-left">
-         {{$event->ev_date}}</td>
-        <td class="border-b
-         border-slate-100
-          dark:border-slate-700
-          p-4 pl-8
+         {{date_format(date_create($event->ev_date), 'd.m.Y')}}</td>
+        <td class="
+        p-2 pl-4
          text-slate-500
          dark:text-slate-400
          text-left">
          {{$event->title}}</td>
-        <td class="border-b
-         border-slate-100
-          dark:border-slate-700
-          p-4 pl-8
-         text-slate-500
-         dark:text-slate-400
-         text-left">
-      <button class="bg-transparent
-       hover:bg-orange-500
-        text-orange-700 font-semibold
-        hover:text-white py-2 px-2 border text-xs
-        border-orange-700 hover:border-transparent rounded">
-        <i class="fa-solid fa-car"></i>
-        Angebote
+         <td class="
+         p-2 pl-4
+          text-slate-500
+          dark:text-slate-400
+          text-left">
+          {{$event->destination}}</td>
+        <td class="p-2 pl-4">
+    <div class="row flex">
+        <button onclick="location.href='{{route('evtransfer', $event->id)}}'"
+        class="rounded-md rounded-r-none bg-transparent py-2 border-orange-900 text-center text-orange-900 font-semibold transition-all shadow-md focus:shadow-none hover:text-white hover:bg-orange-600 px-2 border text-xs"
+          type="button"
+      >
+      <i class="fa-solid fa-car"></i>
+      Biete
       </button>
-      <button class="bg-transparent
-       hover:bg-orange-500
-        text-orange-700 font-semibold
-        hover:text-white py-2 px-2 border text-xs
-        border-orange-700 hover:border-transparent rounded">
+        <button
+          class="rounded-md rounded-l-none bg-transparent py-2 border-orange-900 text-center text-orange-900 font-semibold transition-all shadow-md focus:shadow-none hover:text-white hover:bg-orange-600 px-2 border text-xs"
+          type="button">
         <i class="fa-regular fa-thumbs-up"></i>
-        Gesuche
-      </button>
+        Suche
+        </button>
+      </div>
     </td>
-
       </tr>
       @endforeach
     </tbody>

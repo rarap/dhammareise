@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use App\Models\Transfer;
 use Illuminate\Http\Request;
 
-class TransferController
+class TransferController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Event $ev)
     {
-        //
+        return view('components.transfer')->with('event', $ev);
     }
 
     /**
