@@ -52,6 +52,12 @@
          dark:text-slate-400
          text-left">
          {{$event->title}}</td>
+         <td class="
+         p-2 pl-4
+          text-slate-500
+          dark:text-slate-400
+          text-left">
+          {{$event->destination}}</td>
          <td class="p-2 pl-4">
             <div class="row flex">
                 <button onclick="location.href='{{route('alltransfer', ['event'=>$event->id, 'mode'=>'offer'])}}'"

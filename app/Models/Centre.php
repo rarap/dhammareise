@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Centre extends Model
 {
+    protected $table = 'centre';
     protected $fillable = [
         'created_at',
         'updated_at',

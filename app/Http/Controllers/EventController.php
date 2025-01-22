@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Centre;
 use App\Models\Event;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
+
+use function PHPUnit\Framework\isEmpty;
 
 class EventController extends Controller
 {
@@ -13,7 +16,19 @@ class EventController extends Controller
      */
     public function index(): View
     {
-        $events = Event::get()->where('centre_fk', 'buddha_haus')->sortby('ev_date');
+        $centreIdent = request()->get('centreIdent');
+        $curCentre = Centre::get()->where('identifier', $centreIdent)->first();
+
+        if ($centreIdent != null && $curCentre != null) {
+            session()->put('centreIdent', $centreIdent);
+            session()->put('centreName', $curCentre->name);
+
+            $events = Event::get()->where('centre_fk', 'buddha_haus')->sortby('ev_date');
+        } else {
+            $events = Event::all()->sortby('ev_date');
+        }
+
+
         return view('pages.index')->with('events', $events);
     }
 
