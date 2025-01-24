@@ -23,13 +23,14 @@ class EventController extends Controller
             session()->put('centreIdent', $centreIdent);
             session()->put('centreName', $curCentre->name);
 
-            $events = Event::get()->where('centre_fk', 'buddha_haus')->sortby('ev_date');
+            $withCentre = Event::with('centre')->where('centre_fk', $centreIdent)->get();
+            $eventgroup = $withCentre->groupBy('centre_fk');
         } else {
-            $events = Event::all()->sortby('ev_date');
+            $withCentre = Event::with('centre')->get();
+            $eventgroup = $withCentre->groupBy('centre_fk');
         }
 
-
-        return view('pages.index')->with('events', $events);
+        return view('pages.index')->with('eventgroup', $eventgroup);
     }
 
     /**

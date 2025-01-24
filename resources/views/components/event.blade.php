@@ -1,5 +1,6 @@
-@props(['events'])
-@if(count($events))
+@props(['eventgroup'])
+@if(count($eventgroup))
+@foreach($eventgroup as $events)
 <div class="flex justify-center items-center">
 <table class=" max-w-screen-xl border-collapse border border-slate-400">
     <thead>
@@ -78,8 +79,10 @@
       </tr>
       @endforeach
     </tbody>
-  </table>
-  </div>
+</table>
+</div>
+<br/>
+  @endforeach
   @else
-  No Events
+  No events
   @endif

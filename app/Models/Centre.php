@@ -18,6 +18,6 @@ class Centre extends Model
 
     public function event(): HasMany
     {
-        return $this->hasMany(Event::class);
+        return $this->hasMany(Event::class, 'centre_fk');
     }
 }

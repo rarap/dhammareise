@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Event extends Model
 {
@@ -29,6 +30,6 @@ class Event extends Model
 
     public function centre(): BelongsTo
     {
-        return $this->belongsTo(Centre::class);
+        return $this->belongsTo(Centre::class, 'centre_fk', 'identifier');
     }
 }

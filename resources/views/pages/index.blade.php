@@ -1,6 +1,6 @@
 <x-layout>
     <div>
-        <x-event :events="$events"/>
+        <x-event :eventgroup="$eventgroup"/>
     </div>
 
 </x-layout>
