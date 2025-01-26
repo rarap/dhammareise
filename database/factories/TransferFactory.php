@@ -21,19 +21,22 @@ class TransferFactory extends Factory
         $event = DB::table('event')->inRandomOrder()->first();
         $eventId = $event->id;
         $centreFk = $event->centre_fk;
+        $centreDest = $event->destination;
+
+        //dd($this->faker);
 
         return [
             'created_at' => now(),
-            'updated_at' => $this->faker->dateTimeBetween('now', '+1 years'),
+            'updated_at' => fake()->dateTimeBetween('now', '+1 years'),
             'event_id' => $eventId,
             'centre_fk' => $centreFk,
-            'start' => $this->faker->city(),
-            'via' => $this->faker->city(),
-            'destination' => $this->faker->city(),
-            'email' => $this->faker->firstName(),
-            'name' => $this->faker->firstName(),
-            'message' => $this->faker->paragraphs(2, true),
-            'mode' => $this->faker->randomElement(['offer', 'request'])
+            'start' => fake()->city(),
+            'via' => fake()->city(),
+            'destination' => $centreDest,
+            'email' => fake()->firstName(),
+            'name' => fake()->firstName(),
+            'message' => fake()->paragraphs(2, true),
+            'mode' => fake()->randomElement(['offer', 'request'])
         ];
     }
 }

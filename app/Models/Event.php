@@ -25,7 +25,7 @@ class Event extends Model
 
     public function transfer(): HasMany
     {
-        return $this->hasMany(Transfer::class);
+        return $this->hasMany(Transfer::class, 'id', 'event_id');
     }
 
     public function centre(): BelongsTo

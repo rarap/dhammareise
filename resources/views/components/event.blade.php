@@ -1,10 +1,19 @@
 @props(['eventgroup'])
 @if(count($eventgroup))
 @foreach($eventgroup as $events)
-<div class="flex justify-center items-center">
+<div class="flex justify-center items-center p-8">
 <table class=" max-w-screen-xl border-collapse border border-slate-400">
     <thead>
-      <tr class="bg-slate-400">
+      <tr>
+        <th colSpan="5" class="
+        p-2 pl-4
+       text-orange-800
+       text-center">
+            {{$events[$loop->iteration]->centre->name}}
+        </th>
+
+      </tr>
+        <tr class="bg-slate-400">
         <th class="
         font-medium
         p-2 pl-4
@@ -81,7 +90,6 @@
     </tbody>
 </table>
 </div>
-<br/>
   @endforeach
   @else
   No events

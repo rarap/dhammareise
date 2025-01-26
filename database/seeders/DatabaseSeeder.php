@@ -28,9 +28,8 @@ class DatabaseSeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
         $this->call(CentreSeeder::class);
+        $this->call(EventSeeder::class);
+        $this->call(TransferSeeder::class);
         User::factory(10)->create();
-
-        Event::factory(10)->create();
-        Transfer::factory(50)->create();
     }
 }
