@@ -33,7 +33,7 @@ class TransferFactory extends Factory
             'start' => fake()->city(),
             'via' => fake()->city(),
             'destination' => $centreDest,
-            'email' => fake()->firstName(),
+            'email' => fake()->email(),
             'name' => fake()->firstName(),
             'message' => fake()->paragraphs(2, true),
             'mode' => fake()->randomElement(['offer', 'request'])

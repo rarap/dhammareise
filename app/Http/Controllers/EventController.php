@@ -20,9 +20,6 @@ class EventController extends Controller
         $curCentre = Centre::get()->where('identifier', $centreIdent)->first();
 
         if ($centreIdent != null && $curCentre != null) {
-            session()->put('centreIdent', $centreIdent);
-            session()->put('centreName', $curCentre->name);
-
             $withCentre = Event::with('centre')->where('centre_fk', $centreIdent)->get();
             $eventgroup = $withCentre->groupBy('centre_fk');
         } else {

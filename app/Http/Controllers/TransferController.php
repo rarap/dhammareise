@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Centre;
 use App\Models\Event;
 use App\Models\Transfer;
 use Illuminate\View\View;
@@ -14,8 +15,10 @@ class TransferController extends Controller
      */
     public function index(Event $event): View
     {
-        //return view('components.transfer')->with('event', $event)->with('mode', request('mode'));
-        return view('components.transfer')->with(['event' => $event, 'mode' => request('mode')]);
+        $mode = request()->get('mode');
+        $alltransfer = Transfer::get()->where('event_id', $event->id)->where('mode', $mode);
+        $centre = Centre::where('identifier', $event->centre_fk)->first();
+        return view('components.transfer')->with(['event' => $event, 'centre' => $centre->name, 'mode' => $mode, 'alltransfer' => $alltransfer]);
     }
 
     /**
