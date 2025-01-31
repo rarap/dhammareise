@@ -1,4 +1,5 @@
-@props(['eventgroup'])
+<x-layout>
+@props(['eventgroup', 'header'=>['Id', 'Beginn', 'Veranstaltung', 'Ort', 'Fahrt']])
 @if(count($eventgroup))
 @foreach($eventgroup as $events)
 <div class="flex justify-center items-center p-8">
@@ -6,85 +7,32 @@
     <thead>
       <tr>
         <th colSpan="5" class="
-        p-2 pl-4
+        p-2 pl-4 font-bold
        text-orange-800
        text-center">
             {{$events[$loop->iteration]->centre->name}}
         </th>
-
       </tr>
         <tr class="bg-slate-400">
-        <th class="
-        font-medium
-        p-2 pl-4
-        text-white
-         text-left">Id</th>
-        <th class="
-        font-medium
-        p-2 pl-4
-        text-white
-         text-left">Beginn</th>
-        <th class="
-        font-medium
-        p-2 pl-4
-        text-white
-         text-left">Veranstaltung</th>
-         <th class="
-        font-medium
-        p-2 pl-4
-        text-white
-         text-left">Ort</th>
-        <th class="
-        font-medium
-        p-2 pl-4
-        text-white
-         text-left">Fahrten</th>
+            @foreach($header as $head)
+        <x-tableheader :title="$head "/>
+            @endforeach
       </tr>
     </thead>
     <tbody class="bg-white dark:bg-slate-800">
         @foreach($events as $event)
       <tr class="{{($loop->iteration) % 2 == 0 ? 'bg-gray-200' : 'bg-white'}}">
-        <td class="
-          p-2 pl-4
-         text-slate-500
-         dark:text-slate-400
-         text-left">
-         {{$event->id}}</td>
-        <td class="
-          p-2 pl-4
-         text-slate-500
-         dark:text-slate-400
-         text-left">
-         {{date_format(date_create($event->ev_date), 'd.m.Y')}}</td>
-        <td class="
-        p-2 pl-4
-         text-slate-500
-         dark:text-slate-400
-         text-left">
-         {{$event->title}}</td>
-         <td class="
-         p-2 pl-4
-          text-slate-500
-          dark:text-slate-400
-          text-left">
-          {{$event->destination}}</td>
-         <td class="p-2 pl-4">
-            <div class="row flex">
-                <button onclick="location.href='{{route('alltransfer', ['event'=>$event->id, 'mode'=>'offer'])}}'"
-                class="rounded-md rounded-r-none bg-transparent py-2 border-orange-900 text-center text-orange-900 font-semibold transition-all shadow-md focus:shadow-none hover:text-white hover:bg-orange-600 px-2 border text-xs"
-                  type="button"
-              >
-              <i class="fa-solid fa-car"></i>
-              Biete
-              </button>
-                <button onclick="location.href='{{route('alltransfer', ['event'=>$event->id, 'mode'=>'request'])}}'"
-                  class="rounded-md rounded-l-none bg-transparent py-2 border-orange-900 text-center text-orange-900 font-semibold transition-all shadow-md focus:shadow-none hover:text-white hover:bg-orange-600 px-2 border text-xs"
-                  type="button">
-                <i class="fa-regular fa-thumbs-up"></i>
-                Suche
-                </button>
-              </div>
-            </td>
+        <x-table-data content="{{$event->id}}"/>
+        <x-table-data content="{{date_format(date_create($event->ev_date), 'd.m.Y')}}"/>
+        <x-table-data content="{{$event->title}}"/>
+        <x-table-data content="{{$event->destination}}"/>
+        <x-table-btn-group
+        text_btn1="Biete"
+        text_btn2="Suche"
+        action="location.href"
+        location_btn1="{{route('alltransfer', ['event'=>$event->id, 'mode'=>'offer'])}}"
+        location_btn2="{{route('alltransfer', ['event'=>$event->id, 'mode'=>'request'])}}"
+        />
       </tr>
       @endforeach
     </tbody>
@@ -92,5 +40,8 @@
 </div>
   @endforeach
   @else
-  No events
+  <div class="font-semibold flex justify-center p-6">
+  Zur Zeit keine Veranstaltungen eingetragen
+  </div>
   @endif
+</x-layout>
