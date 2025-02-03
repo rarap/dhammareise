@@ -32,13 +32,20 @@
         <tr>
     </table>
 </div>
+<div x-data="{open: false}">
 <div class="flex justify-center items-center p-2 mb-2">
-<x-dhamma-button
-text="Neues {{($mode==='offer')? 'Mitfahrangebot' : 'Mitfahrgesuch'}} eintragen"
-icon="fa-regular fa-envelope"
-action="location.href"
-location="#"/>
+
+    <x-dhamma-button
+    text="Neues {{($mode==='offer')? 'Mitfahrangebot' : 'Mitfahrgesuch'}} eintragen"
+    icon="fa-regular fa-envelope"
+    action="open"
+    location="true"/>
 </div>
+<x-transfer-modal mode="{{$mode}}"/>
+</div>
+</div>
+
+
 @if(count($alltransfer))
 <div class="flex justify-center p-5">
     <table class="max-w-screen-xl border-collapse border border-slate-400">

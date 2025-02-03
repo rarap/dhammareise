@@ -26,13 +26,15 @@
         <x-table-data content="{{date_format(date_create($event->ev_date), 'd.m.Y')}}"/>
         <x-table-data content="{{$event->title}}"/>
         <x-table-data content="{{$event->destination}}"/>
+            <div x-data="{open: false}">
         <x-table-btn-group
         text_btn1="Biete"
         text_btn2="Suche"
-        action="location.href"
+        action="open=true; location.href"
         location_btn1="{{route('alltransfer', ['event'=>$event->id, 'mode'=>'offer'])}}"
         location_btn2="{{route('alltransfer', ['event'=>$event->id, 'mode'=>'request'])}}"
         />
+        </div>
       </tr>
       @endforeach
     </tbody>
