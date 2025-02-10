@@ -20,10 +20,10 @@ class EventController extends Controller
         $curCentre = Centre::get()->where('identifier', $centreIdent)->first();
 
         if ($centreIdent != null && $curCentre != null) {
-            $withCentre = Event::with('centre')->where('centre_fk', $centreIdent)->get();
+            $withCentre = Event::with('centre')->where('centre_fk', $centreIdent)->orderBy("ev_date", "asc")->get();
             $eventgroup = $withCentre->groupBy('centre_fk');
         } else {
-            $withCentre = Event::with('centre')->get();
+            $withCentre = Event::with('centre')->orderBy("ev_date", "asc")->get();
             $eventgroup = $withCentre->groupBy('centre_fk');
         }
 

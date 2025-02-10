@@ -15,18 +15,18 @@
       </tr>
         <tr class="bg-slate-400">
             @foreach($header as $head)
-        <x-tableheader :title="$head "/>
+        <x-tableheader :title="$head"/>
             @endforeach
       </tr>
     </thead>
-    <tbody class="bg-white dark:bg-slate-800">
+    <tbody>
         @foreach($events as $event)
       <tr class="{{($loop->iteration) % 2 == 0 ? 'bg-gray-200' : 'bg-white'}}">
-        <x-table-data content="{{$event->id}}"/>
-        <x-table-data content="{{date_format(date_create($event->ev_date), 'd.m.Y')}}"/>
-        <x-table-data content="{{$event->title}}"/>
-        <x-table-data content="{{$event->destination}}"/>
-            <div x-data="{open: false}">
+        <x-table-label content="{{$event->id}}"/>
+        <x-table-label content="{{date_format(date_create($event->ev_date), 'd.m.Y')}}"/>
+        <x-table-label content="{{$event->title}}"/>
+        <x-table-label content="{{$event->destination}}"/>
+            <div x-label="{open: false}">
         <x-table-btn-group
         text_btn1="Biete"
         text_btn2="Suche"

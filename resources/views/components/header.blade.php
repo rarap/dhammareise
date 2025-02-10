@@ -17,6 +17,4 @@
             <img src="/images/stille.jpg" alt="Mönche und Nonne in tiefer Andacht" title="Mönche und Nonne in tiefer Andacht">
         </div>
     </div>
-
-    </nav>
 </header>

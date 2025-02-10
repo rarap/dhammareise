@@ -3,7 +3,7 @@
     <div x-data="{open: false}">
     <div class="row flex">
         <x-dhamma-button icon="fa-solid fa-car" text="{{$text_btn1}}" action={{$action}} location="{{$location_btn1}}"/>
-        <x-dhamma-button icon="fa-solid fa-car" text="{{$text_btn2}}" action={{$action}} location="{{$location_btn2}}"/>
+        <x-dhamma-button icon="fa-solid fa-thumbs-up" text="{{$text_btn2}}" action={{$action}} location="{{$location_btn2}}"/>
       </div>
     </div>
     </td>
