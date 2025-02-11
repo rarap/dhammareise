@@ -20,7 +20,7 @@ type="{{$type}}"
 minlength="{{$minlength}}"
 maxlength="{{$maxlength}}">
 @if($type=='email')
-<div class="text-xs text-red-900">Ihre Mailadresse wird nicht angezeigt</div>
+<div class="text-xs text-red-900">Ihre Mailadresse wird nicht öffentlich angezeigt</div>
 @else
 @endif
 </td>

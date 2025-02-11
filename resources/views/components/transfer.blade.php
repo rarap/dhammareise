@@ -52,7 +52,7 @@
 <div class="flex justify-center items-center p-2 mb-2">
     <x-dhamma-button
     text="Neues {{($mode==='offer')? 'Mitfahrangebot' : 'Mitfahrgesuch'}} eintragen"
-    icon="fa-regular fa-envelope"
+    icon="fa-solid {{($mode==='offer'? 'fa-car': 'fa-thumbs-up')}}"
     action="open"
     location="true"/>
 </div>
@@ -97,7 +97,17 @@
                 text-slate-500
                 dark:text-slate-400
                 text-left">
-                <x-dhamma-button text="Kontakt" icon="fa-regular fa-envelope" action="location.href" location="#"/>
+                <div x-data="{open: false}">
+                    <div class="flex justify-center items-center p-2 mb-2">
+                        <x-dhamma-button
+                        text="Kontakt"
+                        icon="fa-regular fa-envelope"
+                        action="open"
+                        location="true"/>
+                    </div>
+                    <x-contact-modal mode="{{$mode}}" :transfer="$transfer" :event="$event"/>
+                    </div>
+                    </div>
             </td>
           </tr>
           @endforeach
