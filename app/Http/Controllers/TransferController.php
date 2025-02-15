@@ -7,6 +7,8 @@ use App\Models\Event;
 use App\Models\Transfer;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
+use App\Mail\TransferMail;
+use Illuminate\Support\Facades\Mail;
 
 class TransferController extends Controller
 {
@@ -21,13 +23,6 @@ class TransferController extends Controller
         return view('components.transfer')->with(['event' => $event, 'centre' => $centre->name, 'mode' => $mode, 'alltransfer' => $alltransfer]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -62,6 +57,41 @@ class TransferController extends Controller
             'newTransfer' => true
         ]);
     }
+
+    public function sendTransferMail(Request $request): View
+    {
+        $id = $request->transferId;
+        $transfer = Transfer::where("id", $request->transferId)->first();
+        $alltransfer = Transfer::orderBy("created_at", "desc")->where('event_id', $request->eventId)->where('mode', $request->mode)->get();
+        $eventWithCtr = Event::with('centre')->where('id', $request->eventId)->first();
+
+        $content = [
+            "mode" => $request->mode,
+            "replyName" => $request->name,
+            "replyMail" => $request->email,
+            "message" => $request->message
+        ];
+
+        Mail::to('items@freenet.de')->send(new TransferMail($transfer, $eventWithCtr, $content));
+
+        return view('components.transfer')->with([
+            'event' => $eventWithCtr,
+            'centre' => $eventWithCtr->centre->name,
+            'mode' => $request->mode,
+            'alltransfer' => $alltransfer,
+            'mailSent' => true
+        ]);
+    }
+
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
+
 
     /**
      * Display the specified resource.

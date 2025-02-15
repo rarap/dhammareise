@@ -1,11 +1,11 @@
 @props(['mode', 'transfer', 'event'])
 <div x-cloak x-show="open" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
-    <div @click.away="open=false" class="bg-white p-4 rounded-lg shadow-md w-full max-w-3xl border-2 border-orange-900 ">
-          <div class="flex justify-center items-center p-4 ">
-            <form method="POST" action="{{ route('alltransfer.store', ['eventId'=>$transfer->id]) }}" >
+    <div @click.away="open=false" class="bg-white p-4 rounded-lg shadow-md w-full max-w-2xl border-2 border-orange-900 ">
+        <div class="flex justify-center items-center p-md-4 p-4">
+            <form method="POST" action="{{ route('alltransfer.sendTransferMail', ['eventId'=>$event->id]) }}" >
                 @csrf
                 <input id="mode" name="mode" type="hidden" value="{{$mode}}">
-                <input id="eventId" name="eventId" type="hidden" value="{{$transfer->id}}">
+                <input id="transferId" name="transferId" type="hidden" value="{{$transfer->id}}">
             <table class=" max-w-screen-md border-collapse border border-slate-400">
                 <thead>
                   <tr class="bg-slate-400">

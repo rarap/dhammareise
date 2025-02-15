@@ -1,7 +1,7 @@
 
 <x-layout>
     @props(['header'=>['Fahrt', 'Name', 'Start', 'Über', 'Ziel', 'Nachricht', '']])
-    @isset($newTransfer)
+    @if(isset($newTransfer) or isset($mailSent))
     <div class="flex justify-center items-center p-6">
         <div role="alert" class="max-w-screen-md flex-col justify-center items-center p-3 text-sm text-white bg-green-600 rounded-md">
             <p class="flex text-left">
@@ -9,13 +9,20 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"></path></svg>
                 Vielen Dank!
             </p>
+            @isset($newTransfer)
             <p class="ml-4 p-3 text-center">
                 Ihr {{($mode==='offer') ? 'Angebot' : 'Gesuch'}} wurde erfolgreich eintragen!
             </p>
+            @endisset
+            @isset($mailSent)
+            <p class="ml-4 p-3 text-center">
+                Ihre Nachricht wurde erfolgreich zugestellt und die Person kann sich jetzt mit Ihnen per Mail in Verbindung setzen.
+            </p>
+            @endisset
 
         </div>
     </div>
-    @endisset
+    @endif
 
     <div class="font-bold flex justify-center items-center text-orange-800 p-2 pl-4">
     @if($mode==='offer')

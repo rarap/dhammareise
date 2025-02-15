@@ -9,5 +9,6 @@ Route::get('/', [EventController::class, 'index'])->name('home');
 
 Route::get('alltransfer/{event}', [TransferController::class, 'index'])->name('alltransfer');
 Route::post('alltransfer/{eventId}/store', [TransferController::class, 'store'])->name('alltransfer.store');
+Route::post('alltransfer/{eventId}/sendTransferMail', [TransferController::class, 'sendTransferMail'])->name('alltransfer.sendTransferMail');
 //Route::post('alltransfer', [TransferController::class, 'store']);
 //Route::get('alltransfer/request/{event}', [TransferController::class, 'index'])->name('alltransfer/request');

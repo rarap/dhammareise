@@ -1,5 +1,5 @@
 <td class="py-2 px-2">
-<textarea id="message" name="message" rows="10" cols="50"
+<textarea id="message" name="message" rows="10" cols="45"
 class="
 shadow
 appearance-none
