@@ -14,6 +14,7 @@
 <body class="font-sans">
     <x-header/>
     {{ $slot }}
+    <x-footer/>
 </body>
 
 </html>

@@ -65,12 +65,11 @@ class TransferController extends Controller
         $alltransfer = Transfer::orderBy("created_at", "desc")->where('event_id', $request->eventId)->where('mode', $request->mode)->get();
         $eventWithCtr = Event::with('centre')->where('id', $request->eventId)->first();
 
-        $content = [
-            "mode" => $request->mode,
-            "replyName" => $request->name,
-            "replyMail" => $request->email,
-            "message" => $request->message
-        ];
+        $content['mode'] =  $request->mode;
+        $content['replyName'] = $request->name;
+        $content['replyMail'] = $request->email;
+        $content['message'] = $request->message;
+
 
         Mail::to('items@freenet.de')->send(new TransferMail($transfer, $eventWithCtr, $content));
 

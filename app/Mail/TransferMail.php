@@ -38,6 +38,7 @@ class TransferMail extends Mailable
     {
         return new Envelope(
             subject: 'Nachricht von Dhammareise',
+            replyTo: $this->content['replyMail']
         );
     }
 
