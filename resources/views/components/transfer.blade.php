@@ -65,7 +65,6 @@
 </div>
 <x-transfer-modal mode="{{$mode}}" eventId="{{$event->id}}"/>
 </div>
-</div>
 
 
 @if(count($alltransfer))

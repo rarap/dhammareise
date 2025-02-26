@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 
 <head>
     <meta charset="UTF-8">
@@ -11,10 +11,14 @@
     @vite('resources/css/app.css')
     <title>Dhammareise</title>
 </head>
-<body class="font-sans">
+<body class="flex flex-col min-h-screen font-sans">
     <x-header/>
+    <main class="flex-grow">
     {{ $slot }}
+    </main>
+    <div class="pt-4 pb-0">
     <x-footer/>
+    </div>
 </body>
 
 </html>
