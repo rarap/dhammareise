@@ -26,9 +26,9 @@
 
     <div class="font-bold flex justify-center items-center text-orange-800 p-2 pl-4">
     @if($mode==='offer')
-    Mitfahrangebote zum {{$centre}}
+    Mitfahrangebote zu(m) {{$centre}}
     @else
-    Mitfahrgesuche zum {{$centre}}
+    Mitfahrgesuche zu(m) {{$centre}}
     @endif
 </div>
     <div class="flex justify-center items-center p-6">
